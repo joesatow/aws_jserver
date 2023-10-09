@@ -1,0 +1,1 @@
+from .secretsManager import GetSecret as GetSecret
