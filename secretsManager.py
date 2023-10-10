@@ -1,4 +1,5 @@
 import boto3
+import json
 from botocore.exceptions import ClientError
 
 #region_name = "us-east-2"
@@ -21,7 +22,7 @@ def GetSecret(secret_name):
         raise e
 
     # Decrypts secret using the associated KMS key.
-    secret = get_secret_value_response['SecretString']
+    secret = list(json.loads(get_secret_value_response['SecretString']).values())[0]
     return secret
 
 def ListSecrets():
